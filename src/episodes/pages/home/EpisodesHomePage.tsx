@@ -1,18 +1,13 @@
-'use client';
-
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
-import { Calendar, Loader2, Tv } from 'lucide-react';
-import { Link } from 'next-view-transitions';
+import { Calendar, Loader2, Navigation, Tv } from 'lucide-react';
 
-import { Navigation } from '@/components/navigation';
-import { PageTransition } from '@/components/page-transition';
-import type { Episode } from '@/lib/simpsons-data';
-import { episodesData } from '@/lib/simpsons-data';
+import { PageTransition } from '@/components/custom/PageTransition';
+import { type Episode, episodesData } from '@/mock/data.mock';
 
 const ITEMS_PER_PAGE = 8;
 
-export default function EpisodesPage() {
+export default function EpisodesHomePage() {
   const [episodes, setEpisodes] = useState<Episode[]>([]);
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
@@ -42,6 +37,7 @@ export default function EpisodesPage() {
   }, [page, loading, hasMore]);
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     loadMoreEpisodes();
   }, []);
 
@@ -115,7 +111,7 @@ export default function EpisodesPage() {
                       transition={{ delay: index * 0.03, type: 'spring' }}
                       layout
                     >
-                      <Link href={`/episodes/${episode.id}`}>
+                      <a href={`/episodes/${episode.id}`}>
                         <motion.div
                           whileHover={{ scale: 1.05, y: -8 }}
                           whileTap={{ scale: 0.95 }}
@@ -161,7 +157,7 @@ export default function EpisodesPage() {
                             </div>
                           </div>
                         </motion.div>
-                      </Link>
+                      </a>
                     </motion.div>
                   ))}
                 </AnimatePresence>

@@ -1,26 +1,19 @@
-'use client';
-
-import { use } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowLeft, Building2, MapPin, User } from 'lucide-react';
-import { notFound } from 'next/navigation';
-import { Link } from 'next-view-transitions';
+import {
+  ArrowLeft,
+  Building2,
+  Link,
+  MapPin,
+  Navigation,
+  User,
+} from 'lucide-react';
 
-import { Navigation } from '@/components/navigation';
-import { PageTransition } from '@/components/page-transition';
-import { locationsData } from '@/lib/simpsons-data';
+import { PageTransition } from '@/components/custom/PageTransition';
+import { locationsData } from '@/mock/data.mock';
 
-export default function LocationDetailPage({
-  params,
-}: {
-  params: Promise<{ id: string }>;
-}) {
-  const { id } = use(params);
+export default function LocationPage() {
+  const id = '1';
   const location = locationsData.find((l) => l.id === Number.parseInt(id));
-
-  if (!location) {
-    notFound();
-  }
 
   return (
     <>
@@ -54,8 +47,8 @@ export default function LocationDetailPage({
                     initial={{ scale: 1.2 }}
                     animate={{ scale: 1 }}
                     transition={{ duration: 0.8 }}
-                    src={location.image}
-                    alt={location.name}
+                    src={location?.image || ''}
+                    alt={location?.name || ''}
                     className="h-full w-full object-cover"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 to-transparent" />
@@ -67,7 +60,7 @@ export default function LocationDetailPage({
                       transition={{ delay: 0.3 }}
                       className="comic-shadow-sm mb-4 inline-block rounded-full bg-secondary px-4 py-2 text-sm font-bold text-secondary-foreground"
                     >
-                      {location.type}
+                      {location?.type || ''}
                     </motion.div>
                     <motion.h1
                       initial={{ opacity: 0, y: 20 }}
@@ -75,7 +68,7 @@ export default function LocationDetailPage({
                       transition={{ delay: 0.4 }}
                       className="font-[family-name:var(--font-bangers)] text-5xl text-background md:text-6xl lg:text-7xl"
                     >
-                      {location.name}
+                      {location?.name}
                     </motion.h1>
                   </div>
                 </div>
@@ -99,7 +92,7 @@ export default function LocationDetailPage({
                       ACERCA DE ESTE LUGAR
                     </h2>
                     <p className="mb-6 text-lg leading-relaxed text-muted-foreground">
-                      {location.description}
+                      {location?.description || ''}
                     </p>
 
                     <div className="comic-shadow rounded-xl border-2 border-border bg-muted p-6">
@@ -109,8 +102,9 @@ export default function LocationDetailPage({
                       <p className="leading-relaxed text-muted-foreground">
                         Esta locación ha sido testigo de innumerables momentos
                         memorables en la historia de Los Simpson. Desde eventos
-                        cómicos hasta momentos emotivos, {location.name} es un
-                        lugar emblemático que los fans reconocen al instante.
+                        cómicos hasta momentos emotivos, {location?.name || ''}{' '}
+                        es un lugar emblemático que los fans reconocen al
+                        instante.
                       </p>
                     </div>
                   </div>
@@ -134,7 +128,7 @@ export default function LocationDetailPage({
                       Dirección
                     </h3>
                     <p className="text-primary-foreground/90">
-                      {location.address}
+                      {location?.address || ''}
                     </p>
                   </motion.div>
 
@@ -149,7 +143,7 @@ export default function LocationDetailPage({
                       Propietario
                     </h3>
                     <p className="text-secondary-foreground/90">
-                      {location.owner}
+                      {location?.owner || ''}
                     </p>
                   </motion.div>
 
@@ -163,7 +157,9 @@ export default function LocationDetailPage({
                     <h3 className="mb-2 font-bold text-accent-foreground">
                       Tipo
                     </h3>
-                    <p className="text-accent-foreground/90">{location.type}</p>
+                    <p className="text-accent-foreground/90">
+                      {location?.type || ''}
+                    </p>
                   </motion.div>
                 </motion.div>
               </div>
@@ -178,7 +174,7 @@ export default function LocationDetailPage({
               </h2>
               <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
                 {locationsData
-                  .filter((l) => l.id !== location.id)
+                  .filter((l) => l.id !== location?.id)
                   .slice(0, 3)
                   .map((relatedLocation, index) => (
                     <motion.div

@@ -1,24 +1,13 @@
-import { use } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowLeft, Calendar, Mic, Star } from 'lucide-react';
-import { notFound } from 'next/navigation';
-import { Link } from 'next-view-transitions';
+import { ArrowLeft, Calendar, Link, Mic, Star } from 'lucide-react';
 
-import { Navigation } from '@/components/navigation';
-import { PageTransition } from '@/components/page-transition';
-import { charactersData } from '@/lib/simpsons-data';
+import { Navigation } from '@/components/custom/Navigation';
+import { PageTransition } from '@/components/custom/PageTransition';
+import { charactersData } from '@/mock/data.mock';
 
-export default function CharacterPage({
-  params,
-}: {
-  params: Promise<{ id: string }>;
-}) {
-  const { id } = use(params);
+export default function CharacterPage() {
+  const id = '1';
   const character = charactersData.find((c) => c.id === Number.parseInt(id));
-
-  if (!character) {
-    notFound();
-  }
 
   return (
     <>
@@ -55,8 +44,8 @@ export default function CharacterPage({
                       initial={{ scale: 1.2 }}
                       animate={{ scale: 1 }}
                       transition={{ duration: 0.5 }}
-                      src={character.image}
-                      alt={character.name}
+                      src={character?.image || ''}
+                      alt={character?.name || ''}
                       className="h-full w-full object-cover"
                     />
                   </div>
@@ -70,15 +59,15 @@ export default function CharacterPage({
                   className="flex flex-col justify-center"
                 >
                   <div className="comic-shadow-sm mb-4 inline-block rounded-full bg-accent px-4 py-2 text-sm font-bold text-accent-foreground">
-                    {character.role}
+                    {character?.role || ''}
                   </div>
 
                   <h1 className="font-[family-name:var(--font-bangers)] mb-6 text-5xl text-foreground md:text-6xl lg:text-7xl">
-                    {character.name}
+                    {character?.name || ''}
                   </h1>
 
                   <p className="mb-8 text-xl leading-relaxed text-muted-foreground">
-                    {character.description}
+                    {character?.description || ''}
                   </p>
 
                   <div className="space-y-4">
@@ -94,7 +83,7 @@ export default function CharacterPage({
                           Primera Aparición
                         </div>
                         <div className="text-lg font-bold text-foreground">
-                          {character.firstAppearance}
+                          {character?.firstAppearance || ''}
                         </div>
                       </div>
                     </motion.div>
@@ -111,7 +100,7 @@ export default function CharacterPage({
                           Actor de Voz
                         </div>
                         <div className="text-lg font-bold text-foreground">
-                          {character.voiceActor}
+                          {character?.voiceActor || ''}
                         </div>
                       </div>
                     </motion.div>
@@ -137,10 +126,10 @@ export default function CharacterPage({
                   </h2>
                 </div>
                 <p className="text-lg text-primary-foreground/90">
-                  {character.name} es uno de los personajes más icónicos de
-                  Springfield. Con más de 30 años en televisión, ha aparecido en
-                  cientos de episodios y se ha convertido en un símbolo cultural
-                  reconocido en todo el mundo.
+                  {character?.name || ''} es uno de los personajes más icónicos
+                  de Springfield. Con más de 30 años en televisión, ha aparecido
+                  en cientos de episodios y se ha convertido en un símbolo
+                  cultural reconocido en todo el mundo.
                 </p>
               </motion.div>
             </div>
@@ -154,7 +143,7 @@ export default function CharacterPage({
               </h2>
               <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
                 {charactersData
-                  .filter((c) => c.id !== character.id)
+                  .filter((c) => c.id !== character?.id)
                   .slice(0, 4)
                   .map((relatedChar, index) => (
                     <motion.div

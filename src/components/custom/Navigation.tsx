@@ -1,7 +1,5 @@
 import { motion } from 'framer-motion';
 import { Home, MapPin, Tv, Users } from 'lucide-react';
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
 
 const navItems = [
   { href: '/', label: 'Inicio', icon: Home },
@@ -11,8 +9,6 @@ const navItems = [
 ];
 
 export function Navigation() {
-  const pathname = usePathname();
-
   return (
     <motion.header
       initial={{ y: -100 }}
@@ -22,7 +18,7 @@ export function Navigation() {
     >
       <div className="container mx-auto px-4">
         <div className="flex h-20 items-center justify-between">
-          <Link
+          <a
             href="/"
             className="flex items-center gap-3"
           >
@@ -33,18 +29,18 @@ export function Navigation() {
             >
               🍩
             </motion.div>
-            <h1 className="font-[family-name:var(--font-bangers)] text-3xl tracking-wider text-primary-foreground">
+            <h1 className="font-heading text-3xl tracking-wider text-primary-foreground">
               SPRINGFIELD DB
             </h1>
-          </Link>
+          </a>
 
           <nav className="flex gap-2">
             {navItems.map((item) => {
-              const isActive = pathname === item.href;
+              const isActive = 'pathname' === item.href;
               const Icon = item.icon;
 
               return (
-                <Link
+                <a
                   key={item.href}
                   href={item.href}
                 >
@@ -71,7 +67,7 @@ export function Navigation() {
                       />
                     )}
                   </motion.div>
-                </Link>
+                </a>
               );
             })}
           </nav>

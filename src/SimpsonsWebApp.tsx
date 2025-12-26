@@ -1,13 +1,9 @@
+import { RouterProvider } from 'react-router';
+
+import { appRouter } from './router/appRouter';
+
 function SimpsonsWebApp() {
-  return (
-    <h1
-      className="text-3xl font-bold underline"
-      role="heading"
-      onClick={() => console.log('Hello World')}
-    >
-      Simpsons Web App
-    </h1>
-  );
+  return <RouterProvider router={appRouter} />;
 }
 
 export default SimpsonsWebApp;

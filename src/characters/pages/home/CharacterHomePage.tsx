@@ -3,16 +3,14 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Loader2 } from 'lucide-react';
-import { Link } from 'next-view-transitions';
 
-import { Navigation } from '@/components/navigation';
-import { PageTransition } from '@/components/page-transition';
-import type { Character } from '@/lib/simpsons-data';
-import { charactersData } from '@/lib/simpsons-data';
+import { Navigation } from '@/components/custom/Navigation';
+import { PageTransition } from '@/components/custom/PageTransition';
+import { type Character, charactersData } from '@/mock/data.mock';
 
 const ITEMS_PER_PAGE = 8;
 
-export default function HomePage() {
+export default function CharacterHomePage() {
   const [characters, setCharacters] = useState<Character[]>([]);
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
@@ -42,6 +40,7 @@ export default function HomePage() {
   }, [page, loading, hasMore]);
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     loadMoreCharacters();
   }, []);
 
@@ -115,7 +114,7 @@ export default function HomePage() {
                       transition={{ delay: index * 0.05 }}
                       layout
                     >
-                      <Link href={`/characters/${character.id}`}>
+                      <a href={`/characters/${character.id}`}>
                         <motion.div
                           whileHover={{ scale: 1.03, y: -5 }}
                           whileTap={{ scale: 0.98 }}
@@ -150,7 +149,7 @@ export default function HomePage() {
                             </div>
                           </div>
                         </motion.div>
-                      </Link>
+                      </a>
                     </motion.div>
                   ))}
                 </AnimatePresence>

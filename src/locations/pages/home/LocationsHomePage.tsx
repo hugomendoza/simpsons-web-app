@@ -2,17 +2,14 @@
 
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
-import { Loader2, MapPin } from 'lucide-react';
-import { Link } from 'next-view-transitions';
+import { Link, Loader2, MapPin, Navigation } from 'lucide-react';
 
-import { Navigation } from '@/components/navigation';
-import { PageTransition } from '@/components/page-transition';
-import type { Location } from '@/lib/simpsons-data';
-import { locationsData } from '@/lib/simpsons-data';
+import { PageTransition } from '@/components/custom/PageTransition';
+import { locationsData } from '@/mock/data.mock';
 
 const ITEMS_PER_PAGE = 6;
 
-export default function LocationsPage() {
+export default function LocationsHomePage() {
   const [locations, setLocations] = useState<Location[]>([]);
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
@@ -33,7 +30,7 @@ export default function LocationsPage() {
       if (newLocations.length === 0) {
         setHasMore(false);
       } else {
-        setLocations((prev) => [...prev, ...newLocations]);
+        setLocations([]);
         setPage((prev) => prev + 1);
       }
 
@@ -42,6 +39,7 @@ export default function LocationsPage() {
   }, [page, loading, hasMore]);
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     loadMoreLocations();
   }, []);
 
@@ -108,14 +106,14 @@ export default function LocationsPage() {
                 <AnimatePresence>
                   {locations.map((location, index) => (
                     <motion.div
-                      key={location.id}
+                      key={index}
                       initial={{ opacity: 0, scale: 0.8, rotate: -5 }}
                       animate={{ opacity: 1, scale: 1, rotate: 0 }}
                       exit={{ opacity: 0, scale: 0.8, rotate: 5 }}
                       transition={{ delay: index * 0.05 }}
                       layout
                     >
-                      <Link href={`/locations/${location.id}`}>
+                      <Link href={`/locations/${1}`}>
                         <motion.div
                           whileHover={{ scale: 1.03, y: -8, rotate: 1 }}
                           whileTap={{ scale: 0.98 }}
@@ -123,25 +121,25 @@ export default function LocationsPage() {
                         >
                           <div className="relative aspect-video overflow-hidden bg-secondary/10">
                             <img
-                              src={location.image || '/placeholder.svg'}
-                              alt={location.name}
+                              src={'/placeholder.svg'}
+                              alt={'dd'}
                               className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
                             />
                             <div className="absolute left-2 top-2">
                               <span className="comic-shadow-sm flex items-center gap-2 rounded-full bg-secondary px-3 py-1 text-sm font-bold text-secondary-foreground">
                                 <MapPin className="h-4 w-4" />
-                                {location.type}
+                                {''}
                               </span>
                             </div>
                           </div>
 
                           <div className="p-5">
                             <h3 className="font-[family-name:var(--font-bangers)] mb-3 text-2xl text-foreground">
-                              {location.name}
+                              {'location.name'}
                             </h3>
 
                             <p className="mb-3 line-clamp-2 text-sm leading-relaxed text-muted-foreground">
-                              {location.description}
+                              {'location.description'}
                             </p>
 
                             <div className="mb-4 space-y-2">
@@ -150,7 +148,7 @@ export default function LocationsPage() {
                                   Dirección:
                                 </span>
                                 <span className="text-muted-foreground">
-                                  {location.address}
+                                  {'location.address'}
                                 </span>
                               </div>
                               <div className="flex items-center gap-2 text-xs">
@@ -158,7 +156,7 @@ export default function LocationsPage() {
                                   Dueño:
                                 </span>
                                 <span className="text-muted-foreground">
-                                  {location.owner}
+                                  {'location.owner'}
                                 </span>
                               </div>
                             </div>

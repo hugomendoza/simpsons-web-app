@@ -1,26 +1,12 @@
-'use client';
-
-import { use } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowLeft, Calendar, Film, Pen } from 'lucide-react';
-import { notFound } from 'next/navigation';
-import { Link } from 'next-view-transitions';
+import { ArrowLeft, Calendar, Film, Link, Navigation, Pen } from 'lucide-react';
 
-import { Navigation } from '@/components/navigation';
-import { PageTransition } from '@/components/page-transition';
-import { episodesData } from '@/lib/simpsons-data';
+import { PageTransition } from '@/components/custom/PageTransition';
+import { episodesData } from '@/mock/data.mock';
 
-export default function EpisodePage({
-  params,
-}: {
-  params: Promise<{ id: string }>;
-}) {
-  const { id } = use(params);
+export default function EpisodePage() {
+  const id = '1';
   const episode = episodesData.find((e) => e.id === Number.parseInt(id));
-
-  if (!episode) {
-    notFound();
-  }
 
   return (
     <>
@@ -58,8 +44,8 @@ export default function EpisodePage({
                         initial={{ scale: 1.2 }}
                         animate={{ scale: 1 }}
                         transition={{ duration: 0.6 }}
-                        src={episode.image}
-                        alt={episode.title}
+                        src={episode?.image || ''}
+                        alt={episode?.title || ''}
                         className="h-full w-full object-cover"
                       />
                     </div>
@@ -73,10 +59,10 @@ export default function EpisodePage({
                     className="comic-shadow mt-6 rounded-2xl border-4 border-foreground bg-gradient-to-r from-primary to-accent p-6 text-center"
                   >
                     <div className="font-[family-name:var(--font-bangers)] text-4xl text-primary-foreground">
-                      TEMPORADA {episode.season}
+                      TEMPORADA {episode?.season || ''}
                     </div>
                     <div className="mt-2 text-2xl font-bold text-primary-foreground/90">
-                      Episodio {episode.episode}
+                      Episodio {episode?.episode || ''}
                     </div>
                   </motion.div>
                 </motion.div>
@@ -89,15 +75,15 @@ export default function EpisodePage({
                   className="lg:col-span-3"
                 >
                   <div className="comic-shadow-sm mb-4 inline-block rounded-full bg-accent px-4 py-2 text-sm font-bold text-accent-foreground">
-                    Episodio {episode.episode}
+                    Episodio {episode?.episode || ''}
                   </div>
 
                   <h1 className="font-[family-name:var(--font-bangers)] mb-6 text-4xl text-foreground md:text-5xl lg:text-6xl">
-                    {episode.title}
+                    {episode?.title || ''}
                   </h1>
 
                   <p className="mb-8 text-xl leading-relaxed text-muted-foreground">
-                    {episode.description}
+                    {episode?.description || ''}
                   </p>
 
                   {/* Info Cards */}
@@ -114,7 +100,7 @@ export default function EpisodePage({
                           Fecha de emisión
                         </div>
                         <div className="text-lg font-bold text-foreground">
-                          {episode.airDate}
+                          {episode?.airDate || ''}
                         </div>
                       </div>
                     </motion.div>
@@ -131,7 +117,7 @@ export default function EpisodePage({
                           Director
                         </div>
                         <div className="text-lg font-bold text-foreground">
-                          {episode.director}
+                          {episode?.director || ''}
                         </div>
                       </div>
                     </motion.div>
@@ -148,7 +134,7 @@ export default function EpisodePage({
                           Guionista
                         </div>
                         <div className="text-lg font-bold text-foreground">
-                          {episode.writer}
+                          {episode?.writer || ''}
                         </div>
                       </div>
                     </motion.div>
@@ -199,7 +185,7 @@ export default function EpisodePage({
               </h2>
               <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
                 {episodesData
-                  .filter((e) => e.id !== episode.id)
+                  .filter((e) => e.id !== episode?.id)
                   .slice(0, 4)
                   .map((relatedEpisode, index) => (
                     <motion.div

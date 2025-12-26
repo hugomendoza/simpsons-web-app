@@ -1,11 +1,8 @@
-'use client';
-
 import { motion } from 'framer-motion';
 import { MapPin, Sparkles, Tv, Users } from 'lucide-react';
-import { Link } from 'next-view-transitions';
 
-import { Navigation } from '@/components/navigation';
-import { PageTransition } from '@/components/page-transition';
+import { Navigation } from '@/components/custom/Navigation';
+import { PageTransition } from '@/components/custom/PageTransition';
 
 const features = [
   {
@@ -34,14 +31,14 @@ const features = [
   },
 ];
 
-const floatingAnimation = {
-  y: [0, -20, 0],
-  transition: {
-    duration: 3,
-    repeat: Number.POSITIVE_INFINITY,
-    ease: 'easeInOut',
-  },
-};
+// const floatingAnimation = {
+//   y: [0, -20, 0],
+//   transition: {
+//     duration: 3,
+//     repeat: Number.POSITIVE_INFINITY,
+//     ease: 'easeInOut',
+//   },
+// };
 
 export default function HomePage() {
   return (
@@ -86,39 +83,42 @@ export default function HomePage() {
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 0.5 }}
               >
-                <Link
+                <a
                   href="/characters"
                   className="comic-shadow inline-flex items-center gap-2 rounded-full bg-accent px-8 py-4 font-bold text-accent-foreground transition-transform hover:scale-105"
                 >
                   <Sparkles className="h-5 w-5" />
                   Comenzar Exploración
-                </Link>
+                </a>
               </motion.div>
             </div>
 
             {/* Animated background elements */}
             <motion.div
-              animate={floatingAnimation}
+              // animate={floatingAnimation}
+              animate={''}
               className="absolute left-10 top-20 text-6xl opacity-20"
               style={{ zIndex: 0 }}
             >
               🍺
             </motion.div>
             <motion.div
-              animate={{
-                ...floatingAnimation,
-                transition: { ...floatingAnimation.transition, delay: 1 },
-              }}
+              // animate={{
+              //   ...floatingAnimation,
+              //   transition: { ...floatingAnimation.transition, delay: 1 },
+              // }}
+              animate={''}
               className="absolute right-10 top-40 text-6xl opacity-20"
               style={{ zIndex: 0 }}
             >
               🎸
             </motion.div>
             <motion.div
-              animate={{
-                ...floatingAnimation,
-                transition: { ...floatingAnimation.transition, delay: 2 },
-              }}
+              // animate={{
+              //   ...floatingAnimation,
+              //   transition: { ...floatingAnimation.transition, delay: 2 },
+              // }}
+              animate={''}
               className="absolute bottom-20 left-1/4 text-6xl opacity-20"
               style={{ zIndex: 0 }}
             >
@@ -149,7 +149,7 @@ export default function HomePage() {
                       viewport={{ once: true }}
                       transition={{ delay: index * 0.1 }}
                     >
-                      <Link href={feature.href}>
+                      <a href={feature.href}>
                         <motion.div
                           whileHover={{ scale: 1.05, y: -5 }}
                           whileTap={{ scale: 0.95 }}
@@ -184,7 +184,7 @@ export default function HomePage() {
                             </motion.div>
                           </div>
                         </motion.div>
-                      </Link>
+                      </a>
                     </motion.div>
                   );
                 })}
@@ -240,18 +240,18 @@ export default function HomePage() {
                   episodios más memorables.
                 </p>
                 <div className="flex flex-wrap justify-center gap-4">
-                  <Link
+                  <a
                     href="/characters"
                     className="comic-shadow inline-flex items-center gap-2 rounded-full bg-background px-8 py-4 font-bold text-foreground transition-transform hover:scale-105"
                   >
                     Ver Personajes
-                  </Link>
-                  <Link
+                  </a>
+                  <a
                     href="/episodes"
                     className="comic-shadow inline-flex items-center gap-2 rounded-full border-4 border-background bg-transparent px-8 py-4 font-bold text-primary-foreground transition-transform hover:scale-105"
                   >
                     Ver Episodios
-                  </Link>
+                  </a>
                 </div>
               </motion.div>
             </div>
