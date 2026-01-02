@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
-import { Calendar, Loader2, Navigation, Tv } from 'lucide-react';
+import { Calendar, Loader2, Tv } from 'lucide-react';
 
 import { PageTransition } from '@/components/custom/PageTransition';
 import { type Episode, episodesData } from '@/mock/data.mock';
@@ -65,7 +65,6 @@ export default function EpisodesHomePage() {
 
   return (
     <>
-      <Navigation />
       <PageTransition>
         <main className="min-h-screen pb-20">
           {/* Header */}

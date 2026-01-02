@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { ArrowLeft, Calendar, Film, Link, Navigation, Pen } from 'lucide-react';
+import { ArrowLeft, Calendar, Film, Link, Pen } from 'lucide-react';
 
 import { PageTransition } from '@/components/custom/PageTransition';
 import { episodesData } from '@/mock/data.mock';
@@ -10,7 +10,6 @@ export default function EpisodePage() {
 
   return (
     <>
-      <Navigation />
       <PageTransition>
         <main className="min-h-screen pb-20">
           {/* Back Button */}

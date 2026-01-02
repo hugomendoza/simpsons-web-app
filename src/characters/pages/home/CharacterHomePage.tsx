@@ -4,7 +4,6 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Loader2 } from 'lucide-react';
 
-import { Navigation } from '@/components/custom/Navigation';
 import { PageTransition } from '@/components/custom/PageTransition';
 import { type Character, charactersData } from '@/mock/data.mock';
 
@@ -68,7 +67,6 @@ export default function CharacterHomePage() {
 
   return (
     <>
-      <Navigation />
       <PageTransition>
         <main className="min-h-screen pb-20">
           {/* Header */}

@@ -1,5 +1,7 @@
-import { motion } from 'framer-motion';
+import { Link } from 'react-router';
 import { Home, MapPin, Tv, Users } from 'lucide-react';
+
+import logoSimpsons from '../../assets/logo-the-simpsons.svg';
 
 const navItems = [
   { href: '/', label: 'Inicio', icon: Home },
@@ -10,69 +12,36 @@ const navItems = [
 
 export function Navigation() {
   return (
-    <motion.header
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ type: 'spring', stiffness: 100 }}
-      className="sticky top-0 z-50 w-full border-b-4 border-foreground bg-primary"
-    >
-      <div className="container mx-auto px-4">
-        <div className="flex h-20 items-center justify-between">
-          <a
-            href="/"
-            className="flex items-center gap-3"
-          >
-            <motion.div
-              whileHover={{ rotate: 360 }}
-              transition={{ duration: 0.5 }}
-              className="text-4xl"
-            >
-              🍩
-            </motion.div>
-            <h1 className="font-heading text-3xl tracking-wider text-primary-foreground">
-              SPRINGFIELD DB
-            </h1>
-          </a>
+    <div className="container mx-auto px-4 animate__animated animate__fadeInDown">
+      <div className="flex h-20 items-center justify-between">
+        <Link
+          to="/"
+          className="flex items-center gap-3"
+        >
+          <img
+            src={logoSimpsons}
+            alt="The Simpsons"
+            className="h-12"
+          />
+        </Link>
 
-          <nav className="flex gap-2">
-            {navItems.map((item) => {
-              const isActive = 'pathname' === item.href;
-              const Icon = item.icon;
-
-              return (
-                <a
-                  key={item.href}
-                  href={item.href}
-                >
-                  <motion.div
-                    whileHover={{ scale: 1.05, y: -2 }}
-                    whileTap={{ scale: 0.95 }}
-                    className={`relative flex items-center gap-2 rounded-lg px-4 py-2 font-bold transition-colors ${
-                      isActive
-                        ? 'bg-secondary text-secondary-foreground comic-shadow-sm'
-                        : 'text-primary-foreground hover:bg-primary-foreground/10'
-                    }`}
-                  >
-                    <Icon className="h-5 w-5" />
-                    <span className="hidden md:inline">{item.label}</span>
-                    {isActive && (
-                      <motion.div
-                        layoutId="activeTab"
-                        className="absolute inset-0 rounded-lg border-2 border-foreground"
-                        transition={{
-                          type: 'spring',
-                          stiffness: 300,
-                          damping: 30,
-                        }}
-                      />
-                    )}
-                  </motion.div>
-                </a>
-              );
-            })}
-          </nav>
-        </div>
+        <nav className="flex gap-4 text-white font-heading text-xl">
+          {navItems.map((item) => {
+            const Icon = item.icon;
+            return (
+              <Link
+                key={item.href}
+                to={item.href}
+                viewTransition
+                className="flex items-center gap-2"
+              >
+                <Icon className="h-5 w-5" />
+                <span>{item.label}</span>
+              </Link>
+            );
+          })}
+        </nav>
       </div>
-    </motion.header>
+    </div>
   );
 }
