@@ -4,7 +4,7 @@ import { Navigation } from '@/components/custom/Navigation';
 
 export const GlobalLayout = () => {
   return (
-    <div className="bg-primary">
+    <div>
       <Navigation />
       <Outlet />
     </div>

@@ -65,6 +65,10 @@
     #000000
   */
 
+  --simpsons-yellow: #ffd90f;
+  --simpsons-pink: #f58ea8;
+  --simpsons-blue: #70d1f4;
+
   --radius: 0.625rem;
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
