@@ -1,75 +1,90 @@
-# React + TypeScript + Vite
+# 🏠 Simpsons Web App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Una aplicación web interactiva y visualmente atractiva dedicada a la serie animada "Los Simpsons". Explora personajes, locaciones icónicas y episodios de la primera temporada.
 
-Currently, two official plugins are available:
+![Simpsons Web App](./src/assets/logo-the-simpsons.svg)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## ✨ Características
 
-## React Compiler
+- **Personajes**: Descubre a Homer, Marge, Bart, Lisa, Maggie, Mr. Burns y más
+- **Locaciones**: Explora la Casa de los Simpsons, Planta Nuclear, Escuela Primaria y más
+- **Episodios**: Revive los episodios de la primera temporada
+- **Diseño**: Interfaz moderna con animaciones fluidas y temática de Los Simpsons
+- **Responsive**: Diseño mobile-first que se adapta a cualquier dispositivo
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+## 🛠️ Tecnologías
 
-Note: This will impact Vite dev & build performances.
+- **React 19** - Framework de interfaz de usuario
+- **TypeScript** - Tipado estático
+- **Vite** - Herramienta de construcción rápida
+- **Tailwind CSS 4** - Framework CSS utilitario
+- **Framer Motion** - Animaciones para React
+- **React Router** - Enrutamiento
+- **shadcn/ui** - Componentes UI accesibles
 
-## Expanding the ESLint configuration
+## 📦 Instalación
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+```bash
+# Clonar el repositorio
+git clone <url-del-repositorio>
+cd simpsons-web-app
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+# Instalar dependencias
+npm install
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+# Ejecutar en modo desarrollo
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 🚀 Scripts Disponibles
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+| Script | Descripción |
+|--------|-------------|
+| `npm run dev` | Inicia el servidor de desarrollo |
+| `npm run build` | Compila para producción |
+| `npm run preview` | Previsualiza la build de producción |
+| `npm run lint` | Ejecuta ESLint |
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+**Puerto por defecto:** `http://localhost:5173`
+
+## 📁 Estructura del Proyecto
+
 ```
+simpsons-web-app/
+├── src/
+│   ├── assets/              # Imágenes y recursos estáticos
+│   ├── characters/          # Módulo de personajes
+│   ├── components/          # Componentes reutilizables
+│   │   ├── custom/          # Componentes personalizados
+│   │   └── ui/              # Componentes shadcn/ui
+│   ├── episodes/            # Módulo de episodios
+│   ├── home/                # Página principal
+│   ├── locations/           # Módulo de locaciones
+│   ├── layout/              # Layout global
+│   ├── lib/                 # Utilidades
+│   ├── mock/                # Datos de ejemplo
+│   ├── router/              # Configuración de rutas
+│   ├── SimpsonsWebApp.tsx   # Componente principal
+│   ├── main.tsx             # Punto de entrada
+│   └── index.css            # Estilos globales
+├── public/
+├── index.html
+├── package.json
+├── vite.config.ts
+└── tsconfig.json
+```
+
+## 🎨 Diseño
+
+- **Colores**: Amarillo, azul y rosa inspirados en la serie
+- **Tipografía**: Albert Sans (texto) + Patrick Hand SC (títulos)
+- **Animaciones**: Transiciones suaves con Framer Motion
+- **Tema**: Modo oscuro/claro soportado
+
+## 📄 Licencia
+
+MIT
+
+---
+
+¡D'oh! Hecho con 🍩 y ❤️

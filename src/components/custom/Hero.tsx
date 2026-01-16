@@ -1,18 +1,13 @@
-interface HeroProps {
+import type { PropsWithChildren } from 'react';
+
+interface HeroProps extends PropsWithChildren {
   desktopImage: string;
   mobileImage: string;
-  title?: string;
-  subtitle?: string;
 }
 
-export const Hero = ({
-  desktopImage,
-  mobileImage,
-  title,
-  subtitle,
-}: HeroProps) => {
+export const Hero = ({ desktopImage, mobileImage, children }: HeroProps) => {
   return (
-    <div className="relative h-[95dvh] w-full overflow-hidden bg-slate-900">
+    <section className="relative h-[95dvh] w-full overflow-hidden bg-slate-900">
       {/* Background Images */}
       <picture className="absolute inset-0 h-full w-full">
         <source
@@ -21,13 +16,13 @@ export const Hero = ({
         />
         <img
           src={desktopImage}
-          alt={title}
+          alt="The Simpsons Web App"
           className="h-full w-full object-cover object-center transition-opacity duration-300"
         />
       </picture>
 
       {/* Content */}
-      <div className="relative z-10 flex h-full flex-col items-center justify-center px-4 text-center">
+      {/* <div className="relative z-10 flex h-full flex-col items-center justify-center px-4 text-center">
         {title && (
           <h1 className="mb-4 max-w-4xl text-4xl font-bold tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl">
             {title}
@@ -38,7 +33,8 @@ export const Hero = ({
             {subtitle}
           </p>
         )}
-      </div>
-    </div>
+      </div> */}
+      {children}
+    </section>
   );
 };
