@@ -11,29 +11,25 @@ const navItems = [
 
 export function Navigation() {
   return (
-    <div className="container px-4 animate__animated animate__fadeInDown absolute top-0 z-20">
-      <div className="flex h-20 items-center justify-between">
+    <div className="absolute top-0 z-50 w-full">
+      <div className="flex h-20 items-center justify-between container mx-auto px-4">
         <Link to="/">
           <img
             src={logoSimpsons}
             alt="The Simpsons"
-            className="h-16"
+            className="h-14"
           />
         </Link>
-
-        <nav className="flex gap-12 text-black">
-          {navItems.map((item) => {
-            return (
-              <Link
-                key={item.href}
-                to={item.href}
-                viewTransition
-                className="flex items-center gap-2 tracking-wide transition-all duration-100 hover:scale-105 font-medium"
-              >
-                <span>{item.label}</span>
-              </Link>
-            );
-          })}
+        <nav className="flex items-center gap-8">
+          {navItems.map((item) => (
+            <Link
+              key={item.href}
+              to={item.href}
+              viewTransition
+            >
+              {item.label}
+            </Link>
+          ))}
         </nav>
       </div>
     </div>

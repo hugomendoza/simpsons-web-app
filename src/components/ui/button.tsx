@@ -20,11 +20,11 @@ const buttonVariants = cva(
           'hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50',
         link: 'text-primary underline-offset-4 hover:underline',
         'simpsons-yellow':
-          'bg-[var(--simpsons-yellow)] text-black border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-1 hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] active:translate-y-0 active:shadow-none rounded-xl font-bold uppercase tracking-wide',
+          'bg-(--simpsons-yellow) text-black border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-1 hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] active:translate-y-0 active:shadow-none rounded-xl font-bold uppercase tracking-wide',
         'simpsons-pink':
-          'bg-[var(--simpsons-pink)] text-black border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-1 hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] active:translate-y-0 active:shadow-none rounded-xl font-bold uppercase tracking-wide',
+          'bg-(--simpsons-pink) text-black border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-1 hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] active:translate-y-0 active:shadow-none rounded-xl font-bold uppercase tracking-wide',
         'simpsons-blue':
-          'bg-[var(--simpsons-blue)] text-black border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-1 hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] active:translate-y-0 active:shadow-none rounded-xl font-bold uppercase tracking-wide',
+          'bg-(--simpsons-blue) text-black border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-1 hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] active:translate-y-0 active:shadow-none rounded-xl font-bold uppercase tracking-wide',
       },
       size: {
         default: 'h-9 px-4 py-2 has-[>svg]:px-3',

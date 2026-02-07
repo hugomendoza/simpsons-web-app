@@ -57,16 +57,9 @@
 
   /* Tailwind CSS Variables */
 
-  /* Colors
-    #FFDE00
-    #78C7F0
-    #D4F0FF
-    #000000
-  */
-
-  --simpsons-yellow: #ffd90f;
+  --simpsons-yellow: #ffde00;
   --simpsons-pink: #f58ea8;
-  --simpsons-blue: #70d1f4;
+  --simpsons-blue: #78c7f0;
 
   --radius: 0.625rem;
   --background: oklch(1 0 0);
@@ -134,13 +127,4 @@
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.556 0 0);
-}
-
-@layer base {
-  * {
-    @apply border-border outline-ring/50;
-  }
-  body {
-    @apply bg-background text-foreground;
-  }
 }

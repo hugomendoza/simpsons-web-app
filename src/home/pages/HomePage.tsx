@@ -1,15 +1,15 @@
+import heroDesktopImage from '@/assets/homer-naked-yellow-background.jpg';
+import heroMobileImage from '@/assets/homer-naked-yellow-mobile.jpg';
+import { Hero } from '@/components/custom/Hero';
 import { NavigationSection } from '@/home/components/NavigationSection';
 import { StatsSection } from '@/home/components/StatsSection';
-import { Hero } from '@/components/custom/Hero';
-
-import heroImage from '@/assets/homer-naked-yellow-background.jpg';
 
 export default function HomePage() {
   return (
     <>
       <Hero
-        desktopImage={heroImage}
-        mobileImage={heroImage}
+        desktopImage={heroDesktopImage}
+        mobileImage={heroMobileImage}
       />
       <NavigationSection />
       <StatsSection />

@@ -7,9 +7,9 @@ interface HeroProps extends PropsWithChildren {
 
 export const Hero = ({ desktopImage, mobileImage, children }: HeroProps) => {
   return (
-    <section className="relative h-[95dvh] w-full overflow-hidden bg-slate-900">
+    <section className="relative w-full aspect-1/2 md:aspect-video lg:aspect-16/8 ">
       {/* Background Images */}
-      <picture className="absolute inset-0 h-full w-full">
+      <picture className="absolute inset-0 h-full w-full object-cover">
         <source
           media="(max-width: 768px)"
           srcSet={mobileImage}
