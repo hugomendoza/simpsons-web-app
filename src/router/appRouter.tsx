@@ -23,7 +23,7 @@ export const appRouter = createBrowserRouter([
         element: <CharacterHomePage />,
       },
       {
-        path: 'character/:id',
+        path: '/character/:id',
         element: <CharacterPage />,
       },
       {
@@ -31,7 +31,7 @@ export const appRouter = createBrowserRouter([
         element: <EpisodesHomePage />,
       },
       {
-        path: 'epidose/:id',
+        path: '/episode/:id',
         element: <EpisodePage />,
       },
       {
@@ -39,7 +39,7 @@ export const appRouter = createBrowserRouter([
         element: <LocationsHomePage />,
       },
       {
-        path: 'location/:id',
+        path: '/location/:id',
         element: <LocationPage />,
       },
     ],
